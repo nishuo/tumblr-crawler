@@ -22,8 +22,7 @@ $ pip install -r requirements.txt
 
 有两种方式来指定你要下载的站点,一是编辑`sites.txt`,二是指定命令行参数.
 
-### 第一种方法:编辑sites.txt文件
-
+### 第一种方法:编辑sites.txt文件（推荐）
 找到一个文字编辑器,然后打开文件`sites.txt`,把你想要下载的Tumblr站点编辑进去,以逗号分隔,不要有空格,不需要`.tumblr.com`的后缀.例如,如果你要下载 _vogue.tumblr.com_ and _gucci.tumblr.com_,这个文件看起来是这样的:
 
 ```
@@ -52,8 +51,7 @@ python tumblr-photo-video-ripper.py site1,site2
 帮你找回丢失的或者删除的图片和视频.
 
 ### 使用代理 (可选)
-
-如果不能够顺利访问和下载tumblr的内容,你应该配置一下代理.
+你如果不能直接访问Tumblr或者没有使用VPN，就需要配置代理。
 
 文件格式参考`./proxies_sample1.json`和`./proxies_sample2.json`.
 然后把你的代理信息用json的格式写入`./proxies.json`.
@@ -71,3 +69,4 @@ python tumblr-photo-video-ripper.py site1,site2
 ```
 
 然后重新运行下载命令.
+
