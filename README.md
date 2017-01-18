@@ -5,13 +5,8 @@ tumblr-crawler
 下载图片和视频.
 源代码库为https://github.com/dixudx/tumblr-crawler， 本代码为玄魂拷贝过来，做了部分修改。
 ## 环境安装
-
-#### 程序猿和程序媛见这里
-
-配置好你的Python环境,然后`pip install requests xmltodict`.
-
-或者
-
+### 首先要安装python环境，安装最新版即可
+#### 下载代码，安装依赖
 ```bash
 $ git clone https://github.com/dixudx/tumblr-crawler.git
 $ cd tumblr-crawler
@@ -20,21 +15,7 @@ $ pip install -r requirements.txt
 
 大功告成,直接跳到下一节配置和运行.
 
-#### 小白见这里
 
-1. 首先你需要一个Python的环境,安装方法请
-参照[这里](http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000).
-
-2. 安装`pip`(主要是希望通过`pip`来安装Python的一些依赖包)
-
-    * 当然也可以通过其他方式来安装这些包(此处自行百度),推荐通过`pip`来安装依赖包;
-    * 如果你是Windows用户,按照上面第一个步骤来安装的Python,那么请忽略这一步,
-    因为已经安装过了; 如果忘记勾选,安装教程见[这里](http://www.tuicool.com/articles/eiM3Er3/)
-    * Mac用户,请参照[这个教程](http://blog.csdn.net/fancylovejava/article/details/39140373)
-    * 然后在终端(terminal)里面运行 `pip install xmltodict six "requests>=2.10.0" "PySocks>=1.5.6"`;
-
-
-3. 下载[tumblr-crawler](https://github.com/dixudx/tumblr-crawler/archive/master.zip)并解压缩;
 
 
 ## 配置和运行
