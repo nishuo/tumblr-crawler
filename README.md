@@ -1,18 +1,16 @@
 tumblr-crawler
 ===============
 
-This is a [Python](https://www.python.org) script that you can easily download
-all the photos and videos from your favorite tumblr blogs.
+这是一个[Python](https://www.python.org)的脚本,配置运行后可以从某些你指定的tumblr博客
+下载图片和视频.
 
-## 中文版教程请[移步这里](./README_CN.md)
+## 环境安装
 
-## Prerequisite
+#### 程序猿和程序媛见这里
 
-#### For Programmers and Developers
+配置好你的Python环境,然后`pip install requests xmltodict`.
 
-You know how to install `Python` and `pip`. Then `pip install requests xmltodict`
-
-or
+或者
 
 ```bash
 $ git clone https://github.com/dixudx/tumblr-crawler.git
@@ -20,64 +18,69 @@ $ cd tumblr-crawler
 $ pip install -r requirements.txt
 ```
 
-#### For non-programmers
+大功告成,直接跳到下一节配置和运行.
+
+#### 小白见这里
+
+1. 首先你需要一个Python的环境,安装方法请
+参照[这里](http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000).
+
+2. 安装`pip`(主要是希望通过`pip`来安装Python的一些依赖包)
+
+    * 当然也可以通过其他方式来安装这些包(此处自行百度),推荐通过`pip`来安装依赖包;
+    * 如果你是Windows用户,按照上面第一个步骤来安装的Python,那么请忽略这一步,
+    因为已经安装过了; 如果忘记勾选,安装教程见[这里](http://www.tuicool.com/articles/eiM3Er3/)
+    * Mac用户,请参照[这个教程](http://blog.csdn.net/fancylovejava/article/details/39140373)
+    * 然后在终端(terminal)里面运行 `pip install xmltodict six "requests>=2.10.0" "PySocks>=1.5.6"`;
 
 
-* Installing Python: refer to [this guide](http://docs.python-guide.org/en/latest/starting/installation/)
-
-* Installing pip: refer to [installation guide](https://pip.readthedocs.org/en/stable/installing/#install-pip)
-
-* Run `pip install xmltodict six "requests>=2.10.0" "PySocks>=1.5.6"` in your terminal ([Windows terminal](http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window),
-[Mac OS terminal](http://www.howtogeek.com/210147/how-to-open-terminal-in-the-current-os-x-finder-location/))
-
-* Download the [zip file](https://github.com/dixudx/tumblr-crawler/archive/master.zip) and Unzip.
+3. 下载[tumblr-crawler](https://github.com/dixudx/tumblr-crawler/archive/master.zip)并解压缩;
 
 
-## Configuration and Downloading
+## 配置和运行
 
-There are 2 ways to specify the sites you want to download, either by creating a sites.txt file or specifying in the command line parameter.
+有两种方式来指定你要下载的站点,一是编辑`sites.txt`,二是指定命令行参数.
 
-### Use sites.txt
+### 第一种方法:编辑sites.txt文件
 
-Find a text editor and open the file `sites.txt`, add the sites you want to download into the file, separated by comma, no space, no `.tumblr.com` suffixes. For example, if you want to download _vogue.tumblr.com_ and _gucci.tumblr.com_, compose the file like this:
+找到一个文字编辑器,然后打开文件`sites.txt`,把你想要下载的Tumblr站点编辑进去,以逗号分隔,不要有空格,不需要`.tumblr.com`的后缀.例如,如果你要下载 _vogue.tumblr.com_ and _gucci.tumblr.com_,这个文件看起来是这样的:
 
 ```
 vogue,gucci
 ```
 
-And then save the file, and run `python tumblr-photo-video-ripper.py`
-in your terminal or just **double click the file** which will be automatically run by Python.
+然后保存文件,双击运行`tumblr-photo-video-ripper.py`或者在终端(terminal)里面
+运行`python tumblr-photo-video-ripper.py`
 
-### Use the command line parameter (only for OS experts)
+### 第二种方法:使用命令行参数(仅针对会使用操作系统终端的用户)
 
-If you are familiar with command lines in Windows or Unix systems, you may run the script with a parameter to specify the sites:
+如果你对Windows或者Unix系统的命令行很熟悉,你可以通过指定运行时的命令行参数来指定要下载的站点:
 
 ```bash
 python tumblr-photo-video-ripper.py site1,site2
 ```
 
-The site names should be separated with comma, no space and no `.tumblr.com` suffixes needed.
+站点的名字以逗号分隔,不要有空格,不需要`.tumblr.com`的后缀.
 
-### How the files get downloaded and stored
+### 站点图片/视频的下载与保存
 
-The photos/videos will be saved to the folders named with the tumblr blog.
-You will find them in the current path/directory.
+程序运行后,会默认在当前路径下面生成一个跟tumblr博客名字相同的文件夹,
+照片和视频都会放在这个文件夹下面.
 
-This script will **not re-download** the photos or videos
-if they have already been downloaded. So it will **do no harm** by running this
-script several times. In the meanwhile, you can find back the **missing** photos
-or videos.
+运行这个脚本,不会重复下载已经下载过的图片和视频,所以不用担心重复下载的问题.同时,多次运行可以
+帮你找回丢失的或者删除的图片和视频.
 
+### 使用代理 (可选)
 
-### Use Proxies (Optional)
+如果不能够顺利访问和下载tumblr的内容,你应该配置一下代理.
 
-You may want to use proxies when downloading. Please refer to `./proxies_sample1.json` and `./proxies_sample2.json`.
-And save your own proxies to `./proxies.json` in json format.
-You can validate the content by visiting <http://jsonlint.com/>.
+文件格式参考`./proxies_sample1.json`和`./proxies_sample2.json`.
+然后把你的代理信息用json的格式写入`./proxies.json`.
+你可以访问<http://jsonlint.com/>以确保你的格式是正确的.
 
-If `./proxies.json` is an empty file, no proxies will be used during downloading.
+如果文件`./proxies.json`没有任何内容,下载过程中不会使用代理.
 
-If you are using Shadowsocks with global mode, your `./proxies.json` can be,
+如果你是全局模式使用Shadowsocks做代理, 此时你的`./proxies.json`文件可以写入如下内容,
 
 ```json
 {
@@ -86,48 +89,4 @@ If you are using Shadowsocks with global mode, your `./proxies.json` can be,
 }
 ```
 
-And now you can enjoy your downloads.
-
-
-### More customizations for Programmers Only
-
-```
-# Setting timeout
-TIMEOUT = 10
-
-# Retry times
-RETRY = 5
-
-# Medium Index Number that Starts from
-START = 0
-
-# Numbers of photos/videos per page
-MEDIA_NUM = 50
-
-# Numbers of downloading threads concurrently
-THREADS = 10
-```
-
-You can set `TIMEOUT` to another value, e.g. 50, according to
-your network quality.
-
-And this script will retry downloading the images or videos several
-times (default value is 5).
-
-You can also only download photos or videos by commenting
-
-```python
-def download_media(self, site):
-    # only download photos
-    self.download_photos(site)
-    #self.download_videos(site)
-```
-
-or
-
-```python
-def download_media(self, site):
-    # only download videos
-    #self.download_photos(site)
-    self.download_videos(site)
-```
+然后重新运行下载命令.
