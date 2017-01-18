@@ -8,7 +8,7 @@ tumblr-crawler
 ### 首先要安装python环境，安装最新版即可
 #### 下载代码，安装依赖
 ```bash
-$ git clone https://github.com/dixudx/tumblr-crawler.git
+$ git clone https://github.com/xuanhun/tumblr-crawler.git
 $ cd tumblr-crawler
 $ pip install -r requirements.txt
 ```
