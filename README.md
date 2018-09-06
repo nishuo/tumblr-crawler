@@ -4,6 +4,9 @@ tumblr-crawler
 这是一个[Python](https://www.python.org)的脚本,配置运行后可以从某些你指定的tumblr博客
 下载图片和视频.
 源代码库为https://github.com/dixudx/tumblr-crawler， 本代码为玄魂拷贝过来，做了部分修改。
+
+代码详解，参见：https://www.cnblogs.com/xuanhun/p/6298436.html
+
 ## 环境安装
 ### 首先要安装python环境，安装最新版即可
 #### 下载代码，安装依赖
