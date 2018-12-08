@@ -23,7 +23,7 @@ START = 0
 MEDIA_NUM = 50
 
 # 并发线程数
-THREADS = 32
+THREADS = 12
 
 # 是否下载图片
 ISDOWNLOADIMG=False
