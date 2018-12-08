@@ -11,10 +11,10 @@ import json
 
 
 # 设置请求超时时间
-TIMEOUT = 10
+TIMEOUT = 25
 
 # 尝试次数
-RETRY = 5
+RETRY = 10
 
 # 分页请求的起始点
 START = 0
@@ -23,7 +23,7 @@ START = 0
 MEDIA_NUM = 50
 
 # 并发线程数
-THREADS = 12
+THREADS = 24
 
 # 是否下载图片
 ISDOWNLOADIMG=False
