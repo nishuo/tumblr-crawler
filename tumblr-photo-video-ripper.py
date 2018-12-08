@@ -167,6 +167,7 @@ class CrawlerScheduler(object):
             response = requests.get(media_url,
                                     proxies=self.proxies)
                 data = xmltodict.parse(response.content.replace("\b", ""))
+            try:
                 posts = data["tumblr"]["posts"]["post"]
                 for post in posts:
                     # select the largest resolution
