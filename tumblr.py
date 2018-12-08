@@ -8,13 +8,15 @@ from six.moves import queue as Queue
 from threading import Thread
 import re
 import json
+import string
+printable = set(string.printable)
 
 
 # 设置请求超时时间
-TIMEOUT = 10
+TIMEOUT = 25
 
 # 尝试次数
-RETRY = 5
+RETRY = 25
 
 # 分页请求的起始点
 START = 0
@@ -23,7 +25,7 @@ START = 0
 MEDIA_NUM = 50
 
 # 并发线程数
-THREADS = 24
+THREADS = 5
 
 # 是否下载图片
 ISDOWNLOADIMG=False
@@ -100,6 +102,10 @@ class DownloadWorker(Thread):
                                         stream=True,
                                         proxies=self.proxies,
                                         timeout=TIMEOUT)
+                    if resp.status_code == 403:
+                        retry_times = RETRY
+                        print("Access Denied when retrieve %s.\n" % medium_url)
+                        raise Exception("Access Denied")
                     with open(file_path, 'wb') as fh:
                         for chunk in resp.iter_content(chunk_size=1024):
                             fh.write(chunk)
@@ -166,7 +172,8 @@ class CrawlerScheduler(object):
             media_url = base_url.format(site, medium_type, MEDIA_NUM, start)
             response = requests.get(media_url,
                                     proxies=self.proxies)
-            data = xmltodict.parse(response.content)
+            data = xmltodict.parse(filter(lambda x: x in printable, response.content.replace("\b", "")))
+                
             try:
                 posts = data["tumblr"]["posts"]["post"]
                 for post in posts:
