@@ -166,7 +166,8 @@ class CrawlerScheduler(object):
             media_url = base_url.format(site, medium_type, MEDIA_NUM, start)
             response = requests.get(media_url,
                                     proxies=self.proxies)
-                 data = xmltodict.parse(response.content)
+                 data = xmltodict.parse(filter(lambda x: x in printable, response.content))
+                
             try:
                 posts = data["tumblr"]["posts"]["post"]
                 for post in posts:
